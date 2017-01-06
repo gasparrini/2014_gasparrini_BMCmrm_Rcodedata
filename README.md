@@ -1,5 +1,5 @@
 
-### Updated R code from Gasparrini & Leone, BMC Medical Research Methodology 2014
+### Updated R code and data from Gasparrini & Leone BMCmrm 2014
 
 --------------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ This methodological article describes how to compute attributable risk measures 
 The code:
 
   * *london.csv* stores the dataset used in the illustrative examples
-  * the numbered files from *01.runmodel.R* to *02.graphs* reproduce the results of the illustrative example
+  * the numbered files from *01.runmodel.R* to *02.graphs.R* reproduce the results of the illustrative example
   * *attrdl.R* creates the function for computing the attributable risk measures
   * *attrdl.Rd* is the R documentation file to produce the help page *attrdl.pdf* for the function attrdl
   
