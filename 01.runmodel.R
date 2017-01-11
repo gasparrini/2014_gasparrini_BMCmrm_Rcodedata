@@ -6,11 +6,10 @@
 #   BMC Medical Research Methodology 2014
 #   http://www.ag-myresearch.com/bmcmrm2014.html
 #
-# Update: 14 March 2016
-# For any problem with this code, please contact antonio.gasparrini@lshtm.ac.uk
-# Please refer to the original code for any copyright issue
-#
-#  See www.ag-myresearch.com for future updates
+# Update: 11 January 2017
+# * an updated version of this code, compatible with future versions of the
+#   software, is available at:
+#   https://github.com/gasparrini/2014_gasparrini_BMCmrm_Rcodedata
 ################################################################################
 
 library(dlnm) ; library(splines) ; library(foreign) ; library(tsModel)

@@ -38,7 +38,7 @@ If \code{sim=TRUE}, the function computes samples of the attributable risk measu
 }
 
 \value{
-By default, a numeric scalar or  of total attributable fraction or number. If \code{sim=TRUE}, a vector of the simulated samples with length \code{nsim}. If \code{tot=FALSE}, a vector with contributions for all the observations. These quantities are defined versus a counterfactual scenario defined through the argument \code{cen}.
+By default, a numeric scalar representing the total attributable fraction or number. If \code{sim=TRUE}, a vector of the simulated samples with length \code{nsim}. If \code{tot=FALSE}, a vector with contributions for all the observations (see Note below). These quantities are defined versus a counterfactual scenario defined through the argument \code{cen}.
 }
 
 \references{
@@ -48,7 +48,7 @@ Gasparrini A, Leone M. Attributable risk from distributed lag models. \emph{BMC 
 \author{Antonio Gasparrini, \email{antonio.gasparrini@lshtm.ac.uk}}
 
 \note{
-The computation of the total attributable number in the current version is slightly different than that obtained by Eq.8a in Gasparrini and Leone (2014). Here the attributable number is rescaled by accounting for missing values, either observed in the exposure data or induced by lagging it. This step makes the estimate of the attributable number consistent with the attributable fraction and the total number of cases.
+The function handles missing values in both the \code{x} and \code{cases} objects, excluding incomplete observations (also due to lagging) accordingly. However, the total attributable number is rescaled to match the fraction using as denominator the total observed number in \code{cases}. This approach uses the all the available information even in the presence of missing values in \code{x}. All of this under the assumption that the missing mechanism is unrelated with both exposure and cases values.
 
 The functions can be also used with estimates from DLNMs reduced to the overall cumulative exposure-response through the function \code{crossreduce} in the package \pkg{dlnm}. In this case, the modified coefficients and (co)variance matrix of the reduced cross-basis in \code{basis} must be passed using the arguments \code{coef} and \code{vcov}. This option can be useful when the original estimates from the full cross-basis are not available any more, for example following a meta-analysis. Given the lag-specific estimates are not available in this case, only the forward version of attributable risk (\code{dir="forw"}) can be computed. See Gasparrini and Leone (2014) for further info.
 }
@@ -58,7 +58,7 @@ The code composing this function has not been systematically tested. The presenc
 }
 
 \seealso{
-Other functions in the package \pkg{dlnm}. See \href{http://www.ag-myresearch.com/bmcmrm2014.html}{here} for an updated version of this function.
+Other functions in the package \pkg{dlnm}. See \href{https://github.com/gasparrini/2014_gasparrini_BMCmrm_Rcodedata}{here} for an updated version of this function.
 }
 
 \examples{
