@@ -4,9 +4,9 @@
 #   "Attributable risk from distributed lag models"
 #   Antonio Gasparrini & Michela Leone
 #   BMC Medical Research Methodology 2014
-#   http://www.ag-myresearch.com/bmcmrm2014.html
+#   http://www.ag-myresearch.com/2014_gasparrini_bmcmrm.html
 #
-# Update: 11 January 2017
+# Update: 15 January 2017
 # * an updated version of this code, compatible with future versions of the
 #   software, is available at:
 #   https://github.com/gasparrini/2014_gasparrini_BMCmrm_Rcodedata
