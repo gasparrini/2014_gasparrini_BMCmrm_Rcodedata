@@ -161,8 +161,8 @@ attrdl <- function(x,basis,cases,model=NULL,coef=NULL,vcov=NULL,type="af",
     X <- matrix(rnorm(length(coef)*nsim),nsim)
     coefsim <- coef + eigen$vectors %*% diag(sqrt(eigen$values),k) %*% t(X)
     # RUN THE LOOP
-    # pre_afsim <- (1 - exp(- Xpredall %*% coefsim)) * cases # a matrix 
-    # afsim <- colSums(pre_afsim, na.rm = TRUE) / sum(cases, na.rm = TRUE)    
+    # pre_afsim <- (1 - exp(- Xpredall %*% coefsim)) * cases # a matrix
+    # afsim <- colSums(pre_afsim,na.rm=TRUE) / sum(cases[!isna],na.rm=TRUE)
     afsim <- apply(coefsim,2, function(coefi) {
       ani <- (1-exp(-drop(Xpredall%*%coefi)))*cases
       sum(ani[!is.na(ani)])/sum(cases[!is.na(ani)])
