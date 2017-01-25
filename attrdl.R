@@ -14,7 +14,7 @@
 #   IT IS RESPONSIBILITY OF THE USER TO CHECK THE RELIABILITY OF THE RESULTS IN
 #   DIFFERENT APPLICATIONS.
 #
-# Version: 24 January 2017
+# Version: 25 January 2017
 # AN UPDATED VERSION CAN BE FOUND AT:
 #   https://github.com/gasparrini/2014_gasparrini_BMCmrm_Rcodedata
 #
