@@ -8,8 +8,8 @@ This function computes estimates of attributable risk (fractions and numbers) fr
 }
 
 \usage{
-attrdl(x, basis, cases, model=NULL, coef=NULL, vcov=NULL, type="af", dir="back",
-  tot=TRUE, cen, range=NULL, sim=FALSE, nsim=5000)
+attrdl(x, basis, cases, model=NULL, coef=NULL, vcov=NULL, model.link=NULL,
+  type="af", dir="back", tot=TRUE, cen, range=NULL, sim=FALSE, nsim=5000)
 }
 
 \arguments{
@@ -17,7 +17,7 @@ attrdl(x, basis, cases, model=NULL, coef=NULL, vcov=NULL, type="af", dir="back",
   \item{basis }{ an object of class \code{"crossbasis"} used for fitting the model.}
   \item{cases }{ the vector of cases or matrix of future cases corresponding to \code{x}.}
   \item{model }{ the fitted model, to be defined with a log link function.}
-  \item{coef, vcov }{ user-provided coefficients and (co)variance matrix.}
+  \item{coef, vcov, model.link }{ user-provided coefficients, (co)variance matrix and model link for the prediction.}
   \item{type }{ measure of attributable risk, either \code{"af"} (fraction, default) or \code{"an"} (number).}
   \item{dir }{ direction used for computing the attributable risk, either \code{"back"} (backward, default) or \code{"forw"} (forward).}
   \item{tot }{ logical. If \code{TRUE} (default), the total estimate is returned.}
@@ -32,7 +32,7 @@ This function computes the attributable fraction or number for a specific exposu
 
 The exposure and cases are provided by the arguments \code{x} and \code{cases}, respectively. The original cross-basis and fitted model containg it used for estimation are provided by the arguments \code{basis} and \code{model}, respectively. Alternatively, the user can provide estimated coefficients and (co)variance matrix with \code{coef} and \code{vcov}.
 
-The function works both with time series and non-time series data. In a time series setting, both \code{x} and \code{cases} represent a complete series of ordered observations. More generally, the user can apply this function for any kind of data: in this case \code{x} must be a matrix of lagged exposures when \code{dir="back"}, and \code{cases} must be a matrix of future cases \code{dir="forw"}. The function can compute the total attributable risk (if \code{tot=TRUE}, the default) or the contribution for each observation. The argument \code{cen} defines the value used as counterfactual scenario.
+The function works both with time series and non-time series data. In a time series setting, both \code{x} and \code{cases} represent a complete series of ordered observations. More generally, the user can apply this function for any kind of data: in this case \code{x} must be a matrix of lagged exposures when \code{dir="back"}, and \code{cases} must be a matrix of future cases when \code{dir="forw"}. The function can compute the total attributable risk (if \code{tot=TRUE}, the default) or the contribution for each observation. The argument \code{cen} defines the value used as counterfactual scenario.
 
 If \code{sim=TRUE}, the function computes samples of the attributable risk measures by simulating from the assumed normal distribution of the estimated coefficients (only implemented for total estimates). These samples can be used to defined empirical confidence intervals.
 }
@@ -50,7 +50,7 @@ Gasparrini A, Leone M. Attributable risk from distributed lag models. \emph{BMC 
 \note{
 The function handles missing values in both the \code{x} and \code{cases} objects, excluding incomplete observations (also due to lagging) accordingly. However, the total attributable number is rescaled to match the fraction using as denominator the total observed number in \code{cases}. This approach uses the all the available information even in the presence of missing values in \code{x}. All of this under the assumption that the missing mechanism is unrelated with both exposure and cases values.
 
-The functions can be also used with estimates from DLNMs reduced to the overall cumulative exposure-response through the function \code{crossreduce} in the package \pkg{dlnm}. In this case, the modified coefficients and (co)variance matrix of the reduced cross-basis in \code{basis} must be passed using the arguments \code{coef} and \code{vcov}. This option can be useful when the original estimates from the full cross-basis are not available any more, for example following a meta-analysis. Given the lag-specific estimates are not available in this case, only the forward version of attributable risk (\code{dir="forw"}) can be computed. See Gasparrini and Leone (2014) for further info.
+The functions can be also used with estimates from DLNMs reduced to the overall cumulative exposure-response through the function \code{crossreduce} in the package \pkg{dlnm}. In this case, the modified coefficients and (co)variance matrix of the reduced cross-basis in \code{basis} must be passed using the arguments \code{coef} and \code{vcov}, together with the information on the link function in \code{model.link}. This option can be useful when the original estimates from the full cross-basis are not available any more, for example following a meta-analysis. Given the lag-specific estimates are not available in this case, only the forward version of attributable risk (\code{dir="forw"}) can be computed. See Gasparrini and Leone (2014) for further info.
 }
 
 \section{Warnings}{
